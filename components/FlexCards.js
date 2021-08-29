@@ -74,7 +74,7 @@ const FlexCardContainer = styled.div`
       border-radius: 30px;
       background-position: center;
       display: flex;
-      transition: 300ms;
+      transition: 300ms ease;
       overflow: hidden;
       cursor: pointer;
 
