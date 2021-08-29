@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import styled from 'styled-components';
-import Layout, { siteTitle } from '../components/layout';
-import Image from 'next/image';
+import Head from "next/head";
+import styled from "styled-components";
+import Layout, { siteTitle } from "../components/layout.js";
+import Image from "next/image";
 
-import FlexCards from '../components/FlexCards.js';
-import Cards from '../components/Cards.js';
+import FlexCards from "../components/FlexCards.js";
+import Cards from "../components/Cards.js";
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
           <div className="social">
             <div className="icon">
               <Image
-                src={'/images/icons/linkedin.svg'}
+                src={"/images/icons/linkedin.svg"}
                 width={30}
                 height={50}
                 alt="linkedin"
@@ -35,7 +35,7 @@ export default function Home() {
             </div>
             <div className="icon">
               <Image
-                src={'/images/icons/yt.svg'}
+                src={"/images/icons/yt.svg"}
                 width={30}
                 height={50}
                 alt="linkedin"
@@ -43,7 +43,7 @@ export default function Home() {
             </div>
             <div className="icon">
               <Image
-                src={'/images/icons/fb.svg'}
+                src={"/images/icons/fb.svg"}
                 width={30}
                 height={50}
                 alt="linkedin"
@@ -52,10 +52,8 @@ export default function Home() {
           </div>
         </HeroText>
         <FlexCards />
-        </HomeContainer>
-        <Cards/>
-
-     
+      </HomeContainer>
+      <Cards />
     </Layout>
   );
 }
@@ -65,7 +63,6 @@ const HomeContainer = styled.div`
   padding: 2rem 0 2rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
 
   grid-gap: 1rem;
   align-items: center;

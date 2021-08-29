@@ -1,21 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
+import React from "react";
+import styled from "styled-components";
+import Image from "next/image";
 
 function FlexCards() {
   const cardImages = [
-    'cardImg-1.jpg',
-    'cardImg-2.jpg',
-    'cardImg-3.jpg',
-    'cardImg-4.jpg',
+    "cardImg-1.jpg",
+    "cardImg-2.jpg",
+    "cardImg-3.jpg",
+    "cardImg-4.jpg",
   ];
 
   const optionHandler = (e) => {
-    if (document.getElementsByClassName('active').length > 0) {
-      console.log(document.getElementsByClassName('active'));
-      document.getElementsByClassName('active')[0].classList.remove('active');
+    if (document.getElementsByClassName("active").length > 0) {
+      document.getElementsByClassName("active")[0].classList.remove("active");
     }
-    e.target.classList.add('active');
+    e.target.classList.add("active");
   };
   return (
     <FlexCardContainer>
@@ -26,18 +25,18 @@ function FlexCards() {
             <div
               key={index}
               onClick={optionHandler}
-              className={`option  ${index === 0 ? 'active' : ''}`}
+              className={`option  ${index === 0 ? "active" : ""}`}
               style={{
                 // backgroundImage: `url("${img}")`,
                 backgroundImage: `url("/images/CardImages/${img}")`,
-                backgroundRepeat: 'no-repeat',
+                backgroundRepeat: "no-repeat",
               }}
             >
               <div className="shadow"></div>
               <div className="tag">
                 <div className="icon">
                   <Image
-                    src={'/images/icons/tripleDot.svg'}
+                    src={"/images/icons/tripleDot.svg"}
                     width={30}
                     height={50}
                     alt="tripleDot"
