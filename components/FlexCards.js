@@ -118,7 +118,8 @@ const FlexCardContainer = styled.div`
     }
 
     .active {
-      width: 60%;
+      /* width: 60%; */
+      flex-grow: 10000;
       background-size: auto 100%;
       transform: scale(102%);
 
