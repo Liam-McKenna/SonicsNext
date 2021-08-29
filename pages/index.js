@@ -62,7 +62,7 @@ const HomeContainer = styled.div`
   /* min-height: 500px; */
   padding: 2rem 0 2rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   grid-gap: 1rem;
   align-items: center;
