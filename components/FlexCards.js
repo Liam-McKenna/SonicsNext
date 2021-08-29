@@ -69,7 +69,7 @@ const FlexCardContainer = styled.div`
     .option {
       position: relative;
       height: 100%;
-      width: 50px;
+      width: 10%;
       background-size: auto 120%;
       border-radius: 30px;
       background-position: center;
