@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import Layout, { siteTitle } from "../components/layout.js";
+import Layout, { siteTitle } from "../components/Layout.js";
 import Image from "next/image";
 
 import FlexCards from "../components/FlexCards.js";
