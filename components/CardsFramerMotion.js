@@ -3,31 +3,70 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 function CardsFramerMotion() {
-  const [animate, setanimate] = useState(false);
+  const [Active1, setActive1] = useState(true);
+  const [Active2, setActive2] = useState(false);
+  const [Active3, setActive3] = useState(false);
+  const [Active4, setActive4] = useState(false);
 
   const animateObj = {
-    closed: { width: '' },
-    open: { width: '30%' },
+    closed: { width: '100px' },
+    open: { width: '500px' },
   };
 
   return (
     <MotionContainer>
       <motion.div
         variants={animateObj}
-        initial={{ opacity: 0.5 }}
-        animate={animate ? 'open' : 'closed'}
-        transition={{ type: 'spring', stiffness: 200 }}
+        initial={{ opacity: 1 }}
+        animate={Active1 ? 'open' : 'closed'}
+        transition={{ type: 'spring', stiffness: 50 }}
         className="box"
-        onClick={() => setanimate(!animate)}
+        onClick={() => {
+          setActive1(true);
+          setActive2(false);
+          setActive3(false);
+          setActive4(false);
+        }}
       ></motion.div>
 
       <motion.div
         variants={animateObj}
         initial="closed"
-        animate={animate ? 'open' : 'closed'}
-        transition={{ type: 'spring', stiffness: 30 }}
+        animate={Active2 ? 'open' : 'closed'}
+        transition={{ type: 'spring', stiffness: 50 }}
         className="box"
-        onClick={() => setanimate(!animate)}
+        onClick={() => {
+          setActive1(false);
+          setActive2(true);
+          setActive3(false);
+          setActive4(false);
+        }}
+      ></motion.div>
+      <motion.div
+        variants={animateObj}
+        initial="closed"
+        animate={Active3 ? 'open' : 'closed'}
+        transition={{ type: 'spring', stiffness: 50 }}
+        className="box"
+        onClick={() => {
+          setActive1(false);
+          setActive2(false);
+          setActive3(true);
+          setActive4(false);
+        }}
+      ></motion.div>
+      <motion.div
+        variants={animateObj}
+        initial="closed"
+        animate={Active4 ? 'open' : 'closed'}
+        transition={{ type: 'spring', stiffness: 50 }}
+        className="box"
+        onClick={() => {
+          setActive1(false);
+          setActive2(false);
+          setActive3(false);
+          setActive4(true);
+        }}
       ></motion.div>
     </MotionContainer>
   );
@@ -38,7 +77,7 @@ const MotionContainer = styled.div`
   gap: 1rem;
   .box {
     width: 100px;
-    height: 100px;
+    height: 500px;
 
     background-color: var(--color8);
   }
