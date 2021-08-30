@@ -66,7 +66,6 @@ const FlexCardContainer = styled.div`
     gap: 15px;
     min-width: 300px;
     height: 400px;
-    will-change: width, background-size;
 
     .option {
       position: relative;

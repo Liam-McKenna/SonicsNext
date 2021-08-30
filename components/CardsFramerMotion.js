@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 function CardsFramerMotion() {
+  const cardImages = [
+    'cardImg-1.jpg',
+    'cardImg-2.jpg',
+    'cardImg-3.jpg',
+    'cardImg-4.jpg',
+  ];
   const [Active1, setActive1] = useState(true);
   const [Active2, setActive2] = useState(false);
   const [Active3, setActive3] = useState(false);
   const [Active4, setActive4] = useState(false);
 
   const animateObj = {
-    closed: { width: '100px' },
+    closed: { width: '' },
     open: { width: '500px' },
   };
 
@@ -20,26 +27,50 @@ function CardsFramerMotion() {
         initial={{ opacity: 1 }}
         animate={Active1 ? 'open' : 'closed'}
         transition={{ type: 'spring', stiffness: 50 }}
-        className="box"
+        className="option"
         onClick={() => {
           setActive1(true);
           setActive2(false);
           setActive3(false);
           setActive4(false);
         }}
-      ></motion.div>
+        style={{
+          backgroundImage: `url("/images/CardImages/${cardImages[0]}")`,
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="tag">
+          <div className="icon">
+            {' '}
+            <Image
+              src={'/images/icons/tripleDot.svg'}
+              width={30}
+              height={50}
+              alt="tripleDot"
+            />
+          </div>
+          <div className="description">
+            <h2>Title</h2>
+            <p>text</p>
+          </div>
+        </div>
+      </motion.div>
 
       <motion.div
         variants={animateObj}
         initial="closed"
         animate={Active2 ? 'open' : 'closed'}
         transition={{ type: 'spring', stiffness: 50 }}
-        className="box"
+        className="option"
         onClick={() => {
           setActive1(false);
           setActive2(true);
           setActive3(false);
           setActive4(false);
+        }}
+        style={{
+          backgroundImage: `url("/images/CardImages/${cardImages[1]}")`,
+          backgroundRepeat: 'no-repeat',
         }}
       ></motion.div>
       <motion.div
@@ -47,25 +78,34 @@ function CardsFramerMotion() {
         initial="closed"
         animate={Active3 ? 'open' : 'closed'}
         transition={{ type: 'spring', stiffness: 50 }}
-        className="box"
+        className="option"
         onClick={() => {
           setActive1(false);
           setActive2(false);
           setActive3(true);
           setActive4(false);
         }}
+        style={{
+          backgroundImage: `url("/images/CardImages/${cardImages[2]}")`,
+          backgroundRepeat: 'no-repeat',
+        }}
       ></motion.div>
+
       <motion.div
         variants={animateObj}
         initial="closed"
         animate={Active4 ? 'open' : 'closed'}
         transition={{ type: 'spring', stiffness: 50 }}
-        className="box"
+        className="option"
         onClick={() => {
           setActive1(false);
           setActive2(false);
           setActive3(false);
           setActive4(true);
+        }}
+        style={{
+          backgroundImage: `url("/images/CardImages/${cardImages[3]}")`,
+          backgroundRepeat: 'no-repeat',
         }}
       ></motion.div>
     </MotionContainer>
@@ -74,12 +114,36 @@ function CardsFramerMotion() {
 
 const MotionContainer = styled.div`
   display: flex;
-  gap: 1rem;
-  .box {
-    width: 100px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+  .option {
+    position: relative;
+    background-size: auto 120%;
+    background-position: center;
+    width: 60px;
     height: 500px;
-
     background-color: var(--color8);
+    border-radius: 30px;
+    .tag {
+      width: 100%;
+      display: flex;
+      position: absolute;
+      height: 50px;
+      padding-left: 10px;
+      left: 0px;
+      bottom: 20px;
+      pointer-events: none;
+      .icon {
+        min-width: 40px;
+        max-width: 40px;
+      }
+      .description {
+        min-width: 200px;
+        max-width: 200px;
+        opacity: 1;
+      }
+    }
   }
 `;
 
