@@ -34,11 +34,17 @@ function CardsFramerMotion() {
           setActive3(false);
           setActive4(false);
         }}
-        style={{
-          backgroundImage: `url("/images/CardImages/${cardImages[0]}")`,
-          backgroundRepeat: 'no-repeat',
-        }}
       >
+        <div className="image">
+          <Image
+            src={`/images/CardImages/${cardImages[0]}`}
+            width={500}
+            height={500}
+            layout="fill"
+            objectFit="cover"
+            alt="card"
+          />
+        </div>
         <div className="tag">
           <div className="icon">
             {' '}
@@ -55,7 +61,6 @@ function CardsFramerMotion() {
           </div>
         </div>
       </motion.div>
-
       <motion.div
         variants={animateObj}
         initial="closed"
@@ -68,11 +73,34 @@ function CardsFramerMotion() {
           setActive3(false);
           setActive4(false);
         }}
-        style={{
-          backgroundImage: `url("/images/CardImages/${cardImages[1]}")`,
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></motion.div>
+      >
+        {' '}
+        <div className="image">
+          <Image
+            src={`/images/CardImages/${cardImages[1]}`}
+            width={500}
+            height={500}
+            layout="fill"
+            objectFit="cover"
+            alt="card"
+          />
+        </div>
+        <div className="tag">
+          <div className="icon">
+            {' '}
+            <Image
+              src={'/images/icons/tripleDot.svg'}
+              width={30}
+              height={50}
+              alt="tripleDot"
+            />
+          </div>
+          <div className="description">
+            <h2>Title</h2>
+            <p>text</p>
+          </div>
+        </div>
+      </motion.div>
       <motion.div
         variants={animateObj}
         initial="closed"
@@ -85,12 +113,34 @@ function CardsFramerMotion() {
           setActive3(true);
           setActive4(false);
         }}
-        style={{
-          backgroundImage: `url("/images/CardImages/${cardImages[2]}")`,
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></motion.div>
-
+      >
+        {' '}
+        <div className="image">
+          <Image
+            src={`/images/CardImages/${cardImages[2]}`}
+            width={500}
+            height={500}
+            layout="fill"
+            objectFit="cover"
+            alt="card"
+          />
+        </div>
+        <div className="tag">
+          <div className="icon">
+            {' '}
+            <Image
+              src={'/images/icons/tripleDot.svg'}
+              width={30}
+              height={50}
+              alt="tripleDot"
+            />
+          </div>
+          <div className="description">
+            <h2>Title</h2>
+            <p>text</p>
+          </div>
+        </div>
+      </motion.div>
       <motion.div
         variants={animateObj}
         initial="closed"
@@ -103,11 +153,34 @@ function CardsFramerMotion() {
           setActive3(false);
           setActive4(true);
         }}
-        style={{
-          backgroundImage: `url("/images/CardImages/${cardImages[3]}")`,
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></motion.div>
+      >
+        {' '}
+        <div className="image">
+          <Image
+            src={`/images/CardImages/${cardImages[3]}`}
+            width={500}
+            height={500}
+            layout="fill"
+            objectFit="cover"
+            alt="card"
+          />
+        </div>
+        <div className="tag">
+          <div className="icon">
+            {' '}
+            <Image
+              src={'/images/icons/tripleDot.svg'}
+              width={30}
+              height={50}
+              alt="tripleDot"
+            />
+          </div>
+          <div className="description">
+            <h2>Title</h2>
+            <p>text</p>
+          </div>
+        </div>
+      </motion.div>
     </MotionContainer>
   );
 }
@@ -116,6 +189,7 @@ const MotionContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   gap: 0.5rem;
   .option {
     position: relative;
@@ -125,6 +199,12 @@ const MotionContainer = styled.div`
     height: 500px;
     background-color: var(--color8);
     border-radius: 30px;
+    overflow: hidden;
+    .image {
+      object-fit: fill;
+      height: 100%;
+    }
+
     .tag {
       width: 100%;
       display: flex;
