@@ -34,6 +34,7 @@ function FlexCards() {
               }}
             >
               <div className="shadow"></div>
+
               <div className="tag">
                 <div className="icon">
                   <Image
@@ -94,6 +95,10 @@ const FlexCardContainer = styled.div`
         );
         bottom: 0;
         pointer-events: none;
+      }
+      .image {
+        object-fit: fill;
+        height: 100%;
       }
 
       .tag {

@@ -41,7 +41,7 @@ const NavbarContainer = styled.div`
   position: absolute;
   width: 100%;
   height: 60px;
-
+  z-index: 10;
   .navbar-layout {
     width: 1680px;
     max-width: 90%;
