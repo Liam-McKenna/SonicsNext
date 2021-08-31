@@ -28,7 +28,7 @@ export default function Home() {
           <p>
             A premiere Audio Visual solutions architecture provider. <br />
             <br />
-            We&#39;re here to support your business with seamless digital and
+            We&apos;re here to support your business with seamless digital and
             physical technical infastructure so that you can collaborate with
             colleagues and customers no matter where they are in the world.
           </p>
