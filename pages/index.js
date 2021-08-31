@@ -16,8 +16,6 @@ export default function Home() {
         <Image
           src="/images/CardImages/cardImg-1.jpg"
           alt="Hero Background"
-          width={700}
-          height={500}
           layout="fill"
           objectFit="cover"
         />
@@ -28,11 +26,11 @@ export default function Home() {
         <HeroText>
           <h1>Welcome To Sonics</h1>
           <p>
-            A premiere Audio Visual solutions architecture provider. <br />{' '}
+            A premiere Audio Visual solutions architecture provider. <br />
             <br />
-            We're here to support your business with seamless digital and
+            We&#39;re here to support your business with seamless digital and
             physical technical infastructure so that you can collaborate with
-            colleagues and customers no matter where they are in the world
+            colleagues and customers no matter where they are in the world.
           </p>
 
           <div className="social">

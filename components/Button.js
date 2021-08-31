@@ -28,7 +28,7 @@ const ButtonContainer = styled(motion.div)`
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  /* border: ; */
+  border: 1rem red;
 
   a {
     padding: 0.5rem 1rem 0.5rem 1rem;
