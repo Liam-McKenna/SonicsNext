@@ -24,19 +24,20 @@ function Button({ title, link }) {
 const ButtonContainer = styled(motion.div)`
   width: auto;
   height: auto;
-  background-color: var(--color9);
-  border-radius: 30px;
+  /* background-color: var(--color1); */
+  border-radius: 10px;
   display: flex;
   justify-content: center;
-  border: 1rem red;
+  border: 2px solid white;
 
   a {
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    padding: 0.3rem 1rem 0.3rem 1rem;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
   }
 `;
 

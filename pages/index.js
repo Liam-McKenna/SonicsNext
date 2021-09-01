@@ -8,6 +8,59 @@ import Button from '../components/Button.js';
 import Cards from '../components/Cards.js';
 
 export default function Home() {
+  const HeroText = () => {
+    return (
+      <HeroTextContainer>
+        <h1>Welcome To Sonics AVI</h1>
+        <p>
+          A premiere Audio Visual solutions architecture provider. <br />
+          <br />
+          We&#39;re here to support your business with seamless digital and
+          physical technical infastructure integration so that you can
+          collaborate with colleagues and customers no matter where they are in
+          the world.
+        </p>
+
+        {/* <div className="social">
+          <div className="icon">
+            <Image
+              src={'/images/icons/linkedin.svg'}
+              width={30}
+              height={50}
+              alt="linkedin"
+            />
+          </div>
+          <div className="icon">
+            <Image
+              src={'/images/icons/yt.svg'}
+              width={30}
+              height={50}
+              alt="linkedin"
+            />
+          </div>
+          <div className="icon">
+            <Image
+              src={'/images/icons/fb.svg'}
+              width={30}
+              height={50}
+              alt="linkedin"
+            />
+          </div>
+        </div> */}
+        <HeroAction />
+      </HeroTextContainer>
+    );
+  };
+
+  const HeroAction = () => {
+    return (
+      <HeroActionContainer>
+        <Button title="Request A Demo" />
+        {/* <Button title="Projects" /> */}
+      </HeroActionContainer>
+    );
+  };
+
   return (
     <Layout>
       <Head>
@@ -23,47 +76,8 @@ export default function Home() {
         <div className="gradiant"></div>
       </Background>
       <HomeContainer>
-        <HeroText>
-          <h1>Welcome To Sonics</h1>
-          <p>
-            A premiere Audio Visual solutions architecture provider. <br />
-            <br />
-            We are here to support your business with seamless digital and
-            physical technical infastructure so that you can collaborate with
-            colleagues and customers no matter where they are in the world.
-          </p>
-
-          <div className="social">
-            <div className="icon">
-              <Image
-                src={'/images/icons/linkedin.svg'}
-                width={30}
-                height={50}
-                alt="linkedin"
-              />
-            </div>
-            <div className="icon">
-              <Image
-                src={'/images/icons/yt.svg'}
-                width={30}
-                height={50}
-                alt="linkedin"
-              />
-            </div>
-            <div className="icon">
-              <Image
-                src={'/images/icons/fb.svg'}
-                width={30}
-                height={50}
-                alt="linkedin"
-              />
-            </div>
-          </div>
-        </HeroText>
-        <div className="button-container">
-          <Button title="Contact" />
-          <Button title="Projects" />
-        </div>
+        <HeroText />
+        {/* <HeroAction /> */}
       </HomeContainer>
       <Cards />
     </Layout>
@@ -76,7 +90,6 @@ const Background = styled.div`
   height: 500px;
   top: 0;
   left: 0;
-
   .gradiant {
     position: absolute;
     width: 100%;
@@ -98,19 +111,17 @@ const HomeContainer = styled.div`
   grid-gap: 1rem;
   align-items: center;
   justify-items: center;
-
-  .button-container {
-    display: flex;
-    gap: 15px;
-  }
 `;
-const HeroText = styled.div`
+const HeroTextContainer = styled.div`
   width: 100%;
   padding: 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  p {
+    max-width: 600px;
+  }
 
   .social {
     display: grid;
@@ -118,4 +129,9 @@ const HeroText = styled.div`
     align-items: center;
     justify-items: center;
   }
+`;
+const HeroActionContainer = styled.div`
+  display: flex;
+  gap: 15px;
+  margin: 1rem;
 `;

@@ -1,20 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { servicesData } from '../public/data/services.js';
 import { v4 as uuidv4 } from 'uuid';
+import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 
 function Cards() {
-  const Card = ({ title, img }) => {
+  const framerVar = {
+    move: { y: -5 },
+  };
+
+  const HiddenContent = () => {
     return (
-      <CardContainer>
+      <motion.h3
+        layout
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        Learn More...
+      </motion.h3>
+    );
+  };
+
+  const Card = ({ title, img }) => {
+    const [isOpen, setisOpen] = useState(false);
+    return (
+      <CardContainer
+        onMouseEnter={() => {
+          setisOpen(true);
+        }}
+        onMouseLeave={() => {
+          setisOpen(false);
+        }}
+        variants={framerVar}
+        animate={isOpen ? `move` : ''}
+      >
         <Image
           layout="fill"
           objectFit="cover"
           src={`/images/CardImages/${img}`}
         />
         <div className="gradiant"></div>
-        <h2>{title}</h2>
+
+        <AnimateSharedLayout>
+          <motion.div layout className="cardContentContainer">
+            <motion.h2 layout>{title}</motion.h2>
+            <AnimatePresence>{isOpen && <HiddenContent />}</AnimatePresence>
+          </motion.div>
+        </AnimateSharedLayout>
       </CardContainer>
     );
   };
@@ -46,7 +80,7 @@ const CardsContainer = styled.div`
   }
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
@@ -68,8 +102,22 @@ const CardContainer = styled.div`
       rgba(0, 0, 0, 0.1) 100%
     );
   }
-  h2 {
+
+  .cardContentContainer {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  h2 {
+  }
+  h3 {
+    bottom: 10px;
+    font-weight: 200;
+    opacity: 0.8;
   }
 `;
 
