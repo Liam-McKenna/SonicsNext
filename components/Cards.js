@@ -1,49 +1,76 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { servicesData } from '../public/data/services.js';
+import { v4 as uuidv4 } from 'uuid';
 
 function Cards() {
-
-const cardData = [
-    'cardImg-1.jpg',
-    'cardImg-2.jpg',
-    'cardImg-3.jpg',
-    'cardImg-4.jpg',
-];
-
+  const Card = ({ title, img }) => {
     return (
-        <CardsContainer>
-                <div className="card">
-                    card1
-                </div>
-                <div className="card">
-                    card2
-                </div>
-                <div className="card">
-                    card3
-                </div>
-                <div className="card">
-                    card4
-                </div>
-        </CardsContainer>
-    )
+      <CardContainer>
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={`/images/CardImages/${img}`}
+        />
+        <div className="gradiant"></div>
+        <h2>{title}</h2>
+      </CardContainer>
+    );
+  };
+
+  return (
+    <CardsContainer>
+      {Object.keys(servicesData).map((data) => {
+        return (
+          <Card
+            title={servicesData[data]['name']}
+            img={servicesData[data]['img']}
+            key={uuidv4()}
+          />
+        );
+      })}
+    </CardsContainer>
+  );
 }
 
 const CardsContainer = styled.div`
-grid-column: span 2;
-display: grid;
-/* align-items: center; */
-justify-items: center;
-grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-gap: 1rem;
-width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1rem;
+  width: 100%;
 
-.card{
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background-color:var(--color9);
-    
-}
+  @media (max-width: 780px) {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
 `;
 
-export default Cards
+const CardContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .gradiant {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 20%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  }
+  h2 {
+    position: absolute;
+  }
+`;
+
+export default Cards;

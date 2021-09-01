@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Layout, { siteTitle } from '../components/Layout.js';
 import Image from 'next/image';
 
+//components
 import Button from '../components/Button.js';
+import Cards from '../components/Cards.js';
 
 export default function Home() {
   return (
@@ -11,7 +13,6 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
       <Background>
         <Image
           src="/images/CardImages/cardImg-1.jpg"
@@ -21,7 +22,6 @@ export default function Home() {
         />
         <div className="gradiant"></div>
       </Background>
-
       <HomeContainer>
         <HeroText>
           <h1>Welcome To Sonics</h1>
@@ -65,6 +65,7 @@ export default function Home() {
           <Button title="Projects" />
         </div>
       </HomeContainer>
+      <Cards />
     </Layout>
   );
 }
