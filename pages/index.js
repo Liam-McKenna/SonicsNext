@@ -67,6 +67,7 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
       <Background>
+        <div className="top-bg"></div>
         <Image
           src="/images/CardImages/cardImg-1.jpg"
           alt="Hero Background"
@@ -75,6 +76,16 @@ export default function Home() {
         />
         <div className="gradiant"></div>
       </Background>
+      <FooterBackground>
+        <div className="top-bg"></div>
+        <Image
+          src="/images/CardImages/cardImg-4.jpg"
+          alt="Hero Background"
+          layout="fill"
+          objectFit="cover"
+        />
+        <div className="gradiant"></div>
+      </FooterBackground>
       <HomeContainer>
         <HeroText />
         {/* <HeroAction /> */}
@@ -102,7 +113,24 @@ const Background = styled.div`
     );
   }
 `;
-
+const FooterBackground = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  bottom: 0;
+  left: 0;
+  .gradiant {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    background: var(--background-color);
+    background: linear-gradient(
+      180deg,
+      var(--background-color) 21%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+`;
 const HomeContainer = styled.div`
   position: relative;
   padding: 2rem 0 2rem 0;

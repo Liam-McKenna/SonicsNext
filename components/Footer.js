@@ -13,10 +13,11 @@ function Footer() {
 
 const FooterContainer = styled.div`
   position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   width: 100%;
   height: 100px;
   bottom: 0;
-  background-color: var(--color2);
   display: flex;
   justify-content: center;
   align-items: center;
