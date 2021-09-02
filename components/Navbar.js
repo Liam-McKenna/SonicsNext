@@ -64,9 +64,22 @@ function Navbar() {
       bottomline: {
         transform: 'rotate(-45deg) Translate(9.3px, -9.3px)',
       },
-      linkBG: {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        backdropFilter: 'blur(5px)',
+      linksShow: {
+        opacity: 1,
+        transition: {
+          duration: 0.4,
+          when: 'beforeChildren',
+          staggerChildren: 0.1,
+        },
+      },
+      linksHidden: {
+        opacity: 0,
+
+        transition: {
+          duration: 0.4,
+          when: 'afterChildren',
+          staggerChildren: 0.1,
+        },
       },
     };
     return (
@@ -74,8 +87,40 @@ function Navbar() {
         <motion.div
           className="links"
           variants={mobileVariants}
-          animate={navOpen ? 'linkBG' : ''}
-        ></motion.div>
+          animate={navOpen ? 'linksShow' : 'linksHidden'}
+          // animate="linksHidden"
+        >
+          <motion.ul
+          // variants={mobileVariants}
+          // animate={navOpen ? 'linkBG' : ''}
+          >
+            <motion.li variants={mobileVariants}>
+              <Link href={'#'}>
+                <a>Home</a>
+              </Link>
+            </motion.li>
+            <motion.li variants={mobileVariants}>
+              <Link href={'#'}>
+                <a>Services</a>
+              </Link>
+            </motion.li>
+            <motion.li variants={mobileVariants}>
+              <Link href={'#'}>
+                <a>Projects</a>
+              </Link>
+            </motion.li>
+            <motion.li variants={mobileVariants}>
+              <Link href={'#'}>
+                <a>About</a>
+              </Link>
+            </motion.li>
+            <motion.li variants={mobileVariants}>
+              <Link href={'#'}>
+                <a>Contact</a>
+              </Link>
+            </motion.li>
+          </motion.ul>
+        </motion.div>
         <div
           className="menu-burger"
           onClick={() => {
@@ -163,16 +208,16 @@ const DesktopNavContainer = styled.div`
 `;
 
 const MobileNavContainer = styled(motion.div)`
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   z-index: 10;
+  /* display: none; */
 
   /* transform: Translate(-35px, 0px); */
 
   .menu-burger {
     z-index: 11;
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -200,6 +245,23 @@ const MobileNavContainer = styled(motion.div)`
     width: 100%;
     height: 100%;
     z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    /* display: none; */
+
+    ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      text-align: center;
+    }
+    a {
+      font-size: 40px;
+      font-weight: 550;
+    }
 
     /* transform: Translate(-35px, 0px); */
   }
