@@ -57,16 +57,25 @@ function Navbar() {
     console.log(navOpen);
     const mobileVariants = {
       visible: { opacity: 1 },
-      hidden: { opacity: 0 },
+      hidden: { opacity: 0, transform: 'Translate(-35px, 0px' },
       topline: {
-        transform: 'rotate(45deg) Translate(10px, 10px)',
+        transform: 'rotate(45deg) Translate(9.3px, 9.3px)',
       },
       bottomline: {
-        transform: 'rotate(-45deg) Translate(10px, 10px)',
+        transform: 'rotate(-45deg) Translate(9.3px, -9.3px)',
+      },
+      linkBG: {
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backdropFilter: 'blur(5px)',
       },
     };
     return (
       <MobileNavContainer>
+        <motion.div
+          className="links"
+          variants={mobileVariants}
+          animate={navOpen ? 'linkBG' : ''}
+        ></motion.div>
         <div
           className="menu-burger"
           onClick={() => {
@@ -89,8 +98,6 @@ function Navbar() {
             animate={navOpen ? 'bottomline' : ''}
           ></motion.div>
         </div>
-
-        <div className="links"></div>
       </MobileNavContainer>
     );
   };
@@ -155,31 +162,48 @@ const DesktopNavContainer = styled.div`
   }
 `;
 
-const MobileNavContainer = styled.div`
-  position: absolute;
+const MobileNavContainer = styled(motion.div)`
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+
+  /* transform: Translate(-35px, 0px); */
 
   .menu-burger {
+    z-index: 11;
     position: absolute;
-    top: 20px;
-    right: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+    width: 70px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+    gap: 8px;
+    border: 10px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
 
     .line {
       position: relative;
-      width: 50px;
+      width: 100%;
       height: 5px;
       background-color: white;
       border-radius: 100px;
-      /* transform: rotate(45deg) Translate(20px, 0px); */
+      /* transform: rotate(45deg) Translate(-13px, -13px); */
     }
   }
+  .links {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    /* transform: Translate(-35px, 0px); */
+  }
+
   @media (min-width: 641px) {
     display: none;
   }
