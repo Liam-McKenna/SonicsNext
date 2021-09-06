@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { useMediaQuery } from 'react-responsive';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 function Navbar() {
@@ -55,7 +53,7 @@ function Navbar() {
 
   const MobileNav = () => {
     const [navOpen, setnavOpen] = useState(false);
-    console.log(navOpen);
+
     const mobileVariants = {
       visible: { opacity: 1 },
       hidden: { opacity: 0, transform: 'Translate(-35px, 0px' },
@@ -65,60 +63,54 @@ function Navbar() {
       bottomline: {
         transform: 'rotate(-45deg) Translate(9.3px, -9.3px)',
       },
+    };
 
-      linksShow: {
+    const mobileLinks = {
+      show: {
         opacity: 1,
-        transition: {
-          duration: 0.4,
-          when: 'beforeChildren',
-          staggerChildren: 0.1,
-        },
       },
-      linksHidden: {
+      hidden: {
         opacity: 0,
-
-        transition: {
-          duration: 0.3,
-          when: 'afterChildren',
-          staggerChildren: 0.05,
-        },
       },
     };
     return (
-      <MobileNavContainer>
+      <MobileNavContainer
+        onClick={() => {
+          setnavOpen(!navOpen);
+        }}
+      >
         <AnimatePresence>
           {navOpen && (
             <motion.div
               key={uuidv4()}
               className="links"
-              variants={mobileVariants}
-              animate={navOpen ? 'linksShow' : 'linksHidden'}
-              exit="linksHidden"
-
-              // animate="linksHidden"
+              variants={mobileLinks}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
             >
               <motion.ul>
-                <motion.li variants={mobileVariants}>
-                  <Link href={'#'}>
+                <motion.li variants={mobileLinks}>
+                  <Link href={'/'}>
                     <a>Home</a>
                   </Link>
                 </motion.li>
-                <motion.li variants={mobileVariants}>
-                  <Link href={'#'}>
+                <motion.li variants={mobileLinks}>
+                  <Link href={'/ok'}>
                     <a>Services</a>
                   </Link>
                 </motion.li>
-                <motion.li variants={mobileVariants}>
+                <motion.li variants={mobileLinks}>
                   <Link href={'#'}>
                     <a>Projects</a>
                   </Link>
                 </motion.li>
-                <motion.li variants={mobileVariants}>
+                <motion.li variants={mobileLinks}>
                   <Link href={'#'}>
                     <a>About</a>
                   </Link>
                 </motion.li>
-                <motion.li variants={mobileVariants}>
+                <motion.li variants={mobileLinks}>
                   <Link href={'#'}>
                     <a>Contact</a>
                   </Link>
@@ -215,12 +207,7 @@ const DesktopNavContainer = styled.div`
 `;
 
 const MobileNavContainer = styled(motion.div)`
-  /* width: 100%;
-  height: 100%; */
   z-index: 10;
-  /* display: none; */
-
-  /* transform: Translate(-35px, 0px); */
 
   .menu-burger {
     z-index: 11;
@@ -254,7 +241,6 @@ const MobileNavContainer = styled(motion.div)`
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
-    /* display: none; */
 
     ul {
       width: 100%;
@@ -269,8 +255,6 @@ const MobileNavContainer = styled(motion.div)`
       font-size: 40px;
       font-weight: 550;
     }
-
-    /* transform: Translate(-35px, 0px); */
   }
 
   @media (min-width: 641px) {

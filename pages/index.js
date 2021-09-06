@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -91,7 +91,7 @@ export default function Home() {
         {/* <HeroAction /> */}
       </HomeContainer>
       <Cards />
-    </Layout>
+    </>
   );
 }
 
