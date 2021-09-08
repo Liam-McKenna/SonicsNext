@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { servicesData } from '../public/data/services.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -23,33 +24,35 @@ function Cards() {
     );
   };
 
-  const Card = ({ title, img }) => {
+  const Card = ({ title, img, slug }) => {
     const [isOpen, setisOpen] = useState(false);
     return (
-      <CardContainer
-        onMouseEnter={() => {
-          setisOpen(true);
-        }}
-        onMouseLeave={() => {
-          setisOpen(false);
-        }}
-        variants={framerVar}
-        animate={isOpen ? `move` : ''}
-      >
-        <Image
-          layout="fill"
-          objectFit="cover"
-          src={`/images/CardImages/${img}`}
-        />
-        <div className="gradiant"></div>
+      <Link href={'/services/' + slug}>
+        <CardContainer
+          onMouseEnter={() => {
+            setisOpen(true);
+          }}
+          onMouseLeave={() => {
+            setisOpen(false);
+          }}
+          variants={framerVar}
+          animate={isOpen ? `move` : ''}
+        >
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={`/images/services/${img}`}
+          />
+          <div className="gradiant"></div>
 
-        <AnimateSharedLayout>
-          <motion.div layout className="cardContentContainer">
-            <motion.h2 layout>{title}</motion.h2>
-            <AnimatePresence>{isOpen && <HiddenContent />}</AnimatePresence>
-          </motion.div>
-        </AnimateSharedLayout>
-      </CardContainer>
+          <AnimateSharedLayout>
+            <motion.div layout className="cardContentContainer">
+              <motion.h2 layout>{title}</motion.h2>
+              <AnimatePresence>{isOpen && <HiddenContent />}</AnimatePresence>
+            </motion.div>
+          </AnimateSharedLayout>
+        </CardContainer>
+      </Link>
     );
   };
 
@@ -60,6 +63,7 @@ function Cards() {
           <Card
             title={servicesData[data]['name']}
             img={servicesData[data]['img']}
+            slug={servicesData[data]['slug']}
             key={uuidv4()}
           />
         );

@@ -69,7 +69,7 @@ export default function Home() {
       <Background>
         <div className="top-bg"></div>
         <Image
-          src="/images/CardImages/cardImg-1.jpg"
+          src="/images/services/serviceThumb1.jpg"
           alt="Hero Background"
           layout="fill"
           objectFit="cover"
@@ -79,7 +79,7 @@ export default function Home() {
       <FooterBackground>
         <div className="top-bg"></div>
         <Image
-          src="/images/CardImages/cardImg-4.jpg"
+          src="/images/services/serviceThumb2.jpg"
           alt="Hero Background"
           layout="fill"
           objectFit="cover"

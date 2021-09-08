@@ -18,33 +18,33 @@ function Navbar() {
               height="50"
             />
           </div>
-          <ul>
-            <li>
-              <Link href={`/`}>
-                <a href="#">Home</a>
+          <motion.ul>
+            <motion.li>
+              <Link href={'/'}>
+                <a>Home</a>
               </Link>
-            </li>
-            <li>
-              <Link href={`/`}>
-                <a href="#">Services</a>
+            </motion.li>
+            <motion.li>
+              <Link href={'/services'}>
+                <a>Services</a>
               </Link>
-            </li>
-            <li>
-              <Link href={`/`}>
-                <a href="#">Projects</a>
+            </motion.li>
+            <motion.li>
+              <Link href={'/projects'}>
+                <a>Projects</a>
               </Link>
-            </li>
-            <li>
-              <Link href={`/`}>
-                <a href="#">About</a>
+            </motion.li>
+            <motion.li>
+              <Link href={'/about'}>
+                <a>About</a>
               </Link>
-            </li>
-            <li>
-              <Link href={`/`}>
-                <a href="#">Contact</a>
+            </motion.li>
+            <motion.li>
+              <Link href={'/contact'}>
+                <a>Contact</a>
               </Link>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </div>
         {/* <button>Contact</button> */}
       </DesktopNavContainer>
@@ -68,6 +68,10 @@ function Navbar() {
     const mobileLinks = {
       show: {
         opacity: 1,
+        transition: {
+          when: 'beforeChildren',
+          staggerChildren: 0.1,
+        },
       },
       hidden: {
         opacity: 0,
@@ -96,22 +100,22 @@ function Navbar() {
                   </Link>
                 </motion.li>
                 <motion.li variants={mobileLinks}>
-                  <Link href={'/ok'}>
+                  <Link href={'/services'}>
                     <a>Services</a>
                   </Link>
                 </motion.li>
                 <motion.li variants={mobileLinks}>
-                  <Link href={'#'}>
+                  <Link href={'/projects'}>
                     <a>Projects</a>
                   </Link>
                 </motion.li>
                 <motion.li variants={mobileLinks}>
-                  <Link href={'#'}>
+                  <Link href={'/about'}>
                     <a>About</a>
                   </Link>
                 </motion.li>
                 <motion.li variants={mobileLinks}>
-                  <Link href={'#'}>
+                  <Link href={'/contact'}>
                     <a>Contact</a>
                   </Link>
                 </motion.li>
