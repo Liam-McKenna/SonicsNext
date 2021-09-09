@@ -17,6 +17,7 @@ export const servicesData = [
     img: 'serviceThumb2.jpg',
     slug: 'DigitalSignage',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const servicesData = [
     img: 'serviceThumb3.jpg',
     slug: 'VideoConference',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const servicesData = [
     img: 'serviceThumb4.jpg',
     slug: 'Maintence&Support',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
   {
     id: 5,
@@ -38,6 +41,7 @@ export const servicesData = [
     img: 'serviceThumb5.jpg',
     slug: 'AVArchitecture',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
   {
     id: 6,
@@ -45,6 +49,7 @@ export const servicesData = [
     img: 'serviceThumb6.jpg',
     slug: 'VideoWall',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
 
   {
@@ -53,6 +58,7 @@ export const servicesData = [
     img: 'serviceThumb7.jpg',
     slug: 'LightingControl',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
   {
     id: 8,
@@ -60,5 +66,6 @@ export const servicesData = [
     img: 'serviceThumb8.jpg',
     slug: 'BoardRooms',
     gallery: ['service1Gal1.jpg', 'service1Gal2.jpg', 'service1Gal3.jpg'],
+    longDescription: [''],
   },
 ];

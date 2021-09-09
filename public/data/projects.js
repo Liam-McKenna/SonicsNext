@@ -6,7 +6,7 @@ export const projects = [
     gallery: ['project1Gal1.jpg', 'project1Gal2.jpg', 'project1Gal3.jpg'],
     slug: 'projSlug1',
     tags: ['Video Conference', 'Monitor', 'Projector'],
-    catagory: ['Meeting Rooms', 'digital Signage'],
+    catagory: ['Meeting Rooms', 'Digital Signage'],
   },
   {
     name: 'Bloodstone2',
@@ -15,7 +15,7 @@ export const projects = [
     gallery: ['project1Gal1.jpg', 'project1Gal2.jpg', 'project1Gal3.jpg'],
     slug: 'projSlug1',
     tags: ['Video Conference', 'Monitor', 'Projector'],
-    catagory: ['Meeting Rooms', 'digital Signage'],
+    catagory: ['Meeting Rooms', 'Digital Signage'],
   },
   {
     name: 'Bloodstone2',
@@ -24,7 +24,7 @@ export const projects = [
     gallery: ['project1Gal1.jpg', 'project1Gal2.jpg', 'project1Gal3.jpg'],
     slug: 'projSlug1',
     tags: ['Video Conference', 'Monitor', 'Projector'],
-    catagory: ['Meeting Rooms', 'digital Signage'],
+    catagory: ['Meeting Rooms', 'Digital Signage'],
   },
   {
     name: 'Bloodstone2',
@@ -33,7 +33,7 @@ export const projects = [
     gallery: ['project1Gal1.jpg', 'project1Gal2.jpg', 'project1Gal3.jpg'],
     slug: 'projSlug1',
     tags: ['Video Conference', 'Monitor', 'Projector'],
-    catagory: ['Meeting Rooms', 'digital Signage'],
+    catagory: ['Meeting Rooms', 'Digital Signage'],
   },
   {
     name: 'Bloodstone3',
@@ -42,6 +42,6 @@ export const projects = [
     gallery: ['project1Gal1.jpg', 'project1Gal2.jpg', 'project1Gal3.jpg'],
     slug: 'projSlug1',
     tags: ['Video Conference', 'Monitor', 'Projector'],
-    catagory: ['digital Signage'],
+    catagory: ['Digital Signage'],
   },
 ];
