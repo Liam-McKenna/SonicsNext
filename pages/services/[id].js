@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { servicesData } from '../../public/data/services.js';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { motion } from 'framer-motion';
+
 //data
 import { projects } from '../../public/data/projects.js';
 //components
@@ -31,9 +33,21 @@ export const getStaticPaths = async () => {
   };
 };
 
+const variants = {
+  hidden: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
 function Service({ service }) {
   return (
-    <ServiceContainer>
+    <ServiceContainer
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      layout
+    >
       <Head>
         <title>Sonics Avi {service.name}</title>
       </Head>
@@ -83,7 +97,7 @@ function Service({ service }) {
   );
 }
 
-const ServiceContainer = styled.div`
+const ServiceContainer = styled(motion.div)`
   .information {
     width: 100%;
     display: flex;

@@ -2,7 +2,8 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import Layout, { siteTitle } from '../components/Layout.js';
 import Image from 'next/image';
-
+import { motion } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 //components
 import Button from '../components/Button.js';
 import Cards from '../components/Cards.js';
@@ -61,8 +62,19 @@ export default function Home() {
     );
   };
 
+  const variants = {
+    hidden: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
   return (
-    <>
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      layout
+    >
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -91,7 +103,7 @@ export default function Home() {
         {/* <HeroAction /> */}
       </HomeContainer>
       <Cards />
-    </>
+    </motion.div>
   );
 }
 

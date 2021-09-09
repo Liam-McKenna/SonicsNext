@@ -1,11 +1,16 @@
 import '../styles/globals.css';
 import Layout, { siteTitle } from '../components/Layout.js';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AnimateSharedLayout>
+      <Layout layout>
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </Layout>
+    </AnimateSharedLayout>
   );
 }
 

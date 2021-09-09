@@ -2,12 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 //components
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 
 const name = 'Your Name';
-export const siteTitle = 'Next.js Sample Website';
+export const siteTitle = 'Sonics AVI';
 
 export default function Layout({ children, home }) {
   return (
@@ -21,7 +22,10 @@ export default function Layout({ children, home }) {
       </Head>
 
       <Navbar />
-      <main>{children}</main>
+      <AnimatePresence exitBeforeEnter>
+        <motion.main>{children}</motion.main>
+      </AnimatePresence>
+
       <Footer />
     </LayoutContainer>
   );
