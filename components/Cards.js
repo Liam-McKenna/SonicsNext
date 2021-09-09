@@ -42,6 +42,7 @@ function Cards() {
             layout="fill"
             objectFit="cover"
             src={`/images/services/${img}`}
+            alt={img}
           />
           <div className="gradiant"></div>
 

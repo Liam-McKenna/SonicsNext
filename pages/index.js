@@ -66,8 +66,8 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <Background>
-        <div className="top-bg"></div>
         <Image
           src="/images/services/serviceThumb1.jpg"
           alt="Hero Background"
@@ -77,15 +77,15 @@ export default function Home() {
         <div className="gradiant"></div>
       </Background>
       <FooterBackground>
-        <div className="top-bg"></div>
         <Image
           src="/images/services/serviceThumb2.jpg"
-          alt="Hero Background"
+          alt="footer Background"
           layout="fill"
           objectFit="cover"
         />
         <div className="gradiant"></div>
       </FooterBackground>
+
       <HomeContainer>
         <HeroText />
         {/* <HeroAction /> */}

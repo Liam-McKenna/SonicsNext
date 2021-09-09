@@ -89,13 +89,17 @@ const Gallery = ({ gallery }) => {
 const GalleryContainer = styled.div`
   position: relative;
   width: 100%;
+  min-height: 350px;
   height: 30vh;
   overflow: hidden;
+  border-radius: 20px;
 
   .FramerContainer {
     width: 100%;
     height: 100%;
     position: absolute;
+    overflow: hidden;
+    border-radius: 20px;
   }
 
   .imgContainer {
