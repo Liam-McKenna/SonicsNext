@@ -5,6 +5,7 @@ import { servicesData } from '../../public/data/services.js';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
+import { PageTransition } from '../../animations/framerAnimations.js';
 
 //data
 import { projects } from '../../public/data/projects.js';
@@ -33,16 +34,10 @@ export const getStaticPaths = async () => {
   };
 };
 
-const variants = {
-  hidden: { opacity: 0 },
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
-};
-
 function Service({ service }) {
   return (
     <ServiceContainer
-      variants={variants}
+      variants={PageTransition}
       initial="hidden"
       animate="enter"
       exit="exit"
@@ -73,7 +68,7 @@ function Service({ service }) {
 
       <Gallery gallery={service.gallery} />
       <div className="information">
-        <h1>{service.name}</h1>
+        <h2>{service.name}</h2>
         <div className="longDescription">
           {service.longDescription.map((paragraph) => {
             return (
@@ -86,6 +81,7 @@ function Service({ service }) {
           })}
         </div>
       </div>
+      <h2>Related Projects</h2>
       <div className="relatedProjects">
         {projects.map((project) => {
           return project.catagory.includes(service.name) ? (

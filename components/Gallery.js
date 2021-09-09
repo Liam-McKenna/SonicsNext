@@ -125,6 +125,7 @@ const GalleryContainer = styled.div`
     font-weight: bold;
     font-size: 18px;
     z-index: 2;
+    box-shadow: 0px 0px 5px #292929;
   }
 
   .next {

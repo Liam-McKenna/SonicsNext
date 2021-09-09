@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -6,6 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 function Navbar() {
+  const router = useRouter();
+  console.log(router.pathname);
+
   const DesktopNav = () => {
     return (
       <DesktopNavContainer>
@@ -18,31 +22,60 @@ function Navbar() {
               height="50"
             />
           </div>
+
           <motion.ul>
             <motion.li>
               <Link href={'/'}>
                 <a>Home</a>
               </Link>
+              <Line
+                initial={{ width: '0%' }}
+                animate={{ width: router.pathname === '/' ? '100%' : '0%' }}
+              />
             </motion.li>
             <motion.li>
               <Link href={'/services'}>
                 <a>Services</a>
               </Link>
+              <Line
+                initial={{ width: '0%' }}
+                animate={{
+                  width: router.pathname === '/services' ? '100%' : '0%',
+                }}
+              />
             </motion.li>
             <motion.li>
               <Link href={'/projects'}>
                 <a>Projects</a>
               </Link>
+              <Line
+                initial={{ width: '0%' }}
+                animate={{
+                  width: router.pathname === '/projects' ? '100%' : '0%',
+                }}
+              />
             </motion.li>
             <motion.li>
               <Link href={'/about'}>
                 <a>About</a>
               </Link>
+              <Line
+                initial={{ width: '0%' }}
+                animate={{
+                  width: router.pathname === '/about' ? '100%' : '0%',
+                }}
+              />
             </motion.li>
             <motion.li>
               <Link href={'/contact'}>
                 <a>Contact</a>
               </Link>
+              <Line
+                initial={{ width: '0%' }}
+                animate={{
+                  width: router.pathname === '/contact' ? '100%' : '0%',
+                }}
+              />
             </motion.li>
           </motion.ul>
         </div>
@@ -185,12 +218,17 @@ const DesktopNavContainer = styled.div`
       height: 100%;
       font-weight: 500;
       display: flex;
+      align-items: center;
       justify-content: flex-end;
       gap: 1rem;
 
       li {
-        height: 100%;
+        height: 50%;
         transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
 
         a {
           height: 100%;
@@ -198,9 +236,6 @@ const DesktopNavContainer = styled.div`
           display: flex;
           align-items: center;
           justify-content: center;
-          &:hover {
-            color: var(--color8);
-          }
         }
       }
     }
@@ -264,6 +299,14 @@ const MobileNavContainer = styled(motion.div)`
   @media (min-width: 641px) {
     display: none;
   }
+`;
+
+const Line = styled(motion.div)`
+  position: relative;
+  bottom: 5px;
+  border-radius: 200px;
+  height: 3px;
+  background-color: var(--color3);
 `;
 
 export default Navbar;
