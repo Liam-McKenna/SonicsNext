@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
@@ -30,7 +30,6 @@ const Modal = ({ showModal, setShowModal, gallery, imageIndex }) => {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
-  console.log(showModal);
   return (
     <AnimatePresence exitBeforeEnter>
       {showModal && (
@@ -65,11 +64,19 @@ const swipePower = (offset, velocity) => {
 const Gallery = ({ gallery }) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const [showModal, setShowModal] = useState(false);
+  const [tapStart, setTapStart] = useState({ x: 0, y: 0 });
+  const [tapEnd, setTapEnd] = useState({ x: 0, y: 0 });
   const imageIndex = wrap(0, gallery.length, page);
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
   };
+
+  useEffect(() => {
+    tapStart.x === tapEnd.x && tapStart.y === tapEnd.y
+      ? setShowModal(true)
+      : setShowModal(false);
+  }, [tapStart, tapEnd]);
 
   return (
     <>
@@ -77,8 +84,14 @@ const Gallery = ({ gallery }) => {
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             className="FramerContainer"
-            onClick={() => setShowModal(!showModal)}
-            // whileTap={() => setShowModal(!showModal)}
+            // onClick={() => setShowModal(!showModal)}
+            onTap={(event, info) => {
+              setTapEnd({ ...tapStart, x: info.point.x, y: info.point.y });
+            }}
+            onTapStart={(event, info) => {
+              // tapStartFunc(info.point.x, info.point.y);
+              setTapStart({ ...tapStart, x: info.point.x, y: info.point.y });
+            }}
             key={page}
             custom={direction}
             variants={variants}
