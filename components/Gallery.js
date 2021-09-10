@@ -64,7 +64,7 @@ const swipePower = (offset, velocity) => {
 const Gallery = ({ gallery }) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const [showModal, setShowModal] = useState(false);
-  const [tapStart, setTapStart] = useState({ x: 0, y: 0 });
+  const [tapStart, setTapStart] = useState({ x: 1, y: 1 });
   const [tapEnd, setTapEnd] = useState({ x: 0, y: 0 });
   const imageIndex = wrap(0, gallery.length, page);
 
