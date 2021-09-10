@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const ProjectCard = ({ project }) => {
+  const [imageIsLoaded, setImageIsLoaded] = useState(false);
+
   const projCardVariants = {
     on: {},
     off: {},
@@ -22,12 +24,23 @@ const ProjectCard = ({ project }) => {
           clipPath: 'polygon(0 0, 100% 0, 100% 95%, 0 100%)',
         }}
       >
-        <Image
-          src={`/images/projects/${project.thumbnail}`}
-          alt={project.thumbnail}
-          layout="fill"
-          objectFit="cover"
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: imageIsLoaded ? 1 : 0 }}
+        >
+          <Image
+            src={`/images/projects/${project.thumbnail}`}
+            alt={project.thumbnail}
+            layout="fill"
+            objectFit="cover"
+            onLoad={(event) => {
+              const target = event.target;
+              if (target.src.indexOf('data:image/gif;base64') < 0) {
+                setImageIsLoaded(true);
+              }
+            }}
+          />
+        </motion.div>
         <motion.div
           whileHover={{
             opacity: 0,

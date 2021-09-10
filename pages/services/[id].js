@@ -66,7 +66,10 @@ function Service({ service }) {
         <div className="gradiant"></div>
       </FooterBackground>
 
-      <Gallery gallery={service.gallery} />
+      <div className="galleryContainer">
+        <Gallery gallery={service.gallery} />
+      </div>
+
       <div className="information">
         <h2>{service.name}</h2>
         <div className="longDescription">
@@ -106,13 +109,15 @@ const ServiceContainer = styled(motion.div)`
       text-align: center;
     }
   }
-
   .relatedProjects {
     display: grid;
     width: 100%;
     justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
+  }
+
+  .galleryContainer {
   }
 `;
 

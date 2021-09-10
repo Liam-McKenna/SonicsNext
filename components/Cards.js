@@ -26,6 +26,8 @@ function Cards() {
 
   const Card = ({ title, img, slug }) => {
     const [isOpen, setisOpen] = useState(false);
+    const [imageIsLoaded, setImageIsLoaded] = useState(false);
+    console.log(imageIsLoaded);
     return (
       <Link href={'/services/' + slug}>
         <CardContainer
@@ -38,12 +40,24 @@ function Cards() {
           variants={framerVar}
           animate={isOpen ? `move` : ''}
         >
-          <Image
-            layout="fill"
-            objectFit="cover"
-            src={`/images/services/${img}`}
-            alt={img}
-          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: imageIsLoaded ? 1 : 0 }}
+          >
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src={`/images/services/${img}`}
+              alt={img}
+              onLoad={(event) => {
+                const target = event.target;
+                // next/image use an 1x1 px git as placeholder. We only want the onLoad event on the actual image
+                if (target.src.indexOf('data:image/gif;base64') < 0) {
+                  setImageIsLoaded(true);
+                }
+              }}
+            />
+          </motion.div>
           <div className="gradiant"></div>
 
           <AnimateSharedLayout>

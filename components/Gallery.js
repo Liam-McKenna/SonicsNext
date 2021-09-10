@@ -25,6 +25,38 @@ const variants = {
   },
 };
 
+const Modal = ({ showModal, setShowModal, gallery, imageIndex }) => {
+  const modalBG = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
+  console.log(showModal);
+  return (
+    <AnimatePresence exitBeforeEnter>
+      {showModal && (
+        <ModalContainer
+          variants={modalBG}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          <motion.div className="imgContainer">
+            <Image
+              src={`/images/services/gallery/${gallery[imageIndex]}`}
+              alt={gallery[imageIndex]}
+              layout="fill"
+              objectFit="cover"
+            />
+          </motion.div>
+        </ModalContainer>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
@@ -32,6 +64,7 @@ const swipePower = (offset, velocity) => {
 
 const Gallery = ({ gallery }) => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const [showModal, setShowModal] = useState(false);
   const imageIndex = wrap(0, gallery.length, page);
 
   const paginate = (newDirection) => {
@@ -39,50 +72,60 @@ const Gallery = ({ gallery }) => {
   };
 
   return (
-    <GalleryContainer>
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          className="FramerContainer"
-          key={page}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
+    <>
+      <GalleryContainer>
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            className="FramerContainer"
+            onClick={() => setShowModal(!showModal)}
+            // whileTap={() => setShowModal(!showModal)}
+            key={page}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
 
-            if (swipe < -swipeConfidenceThreshold) {
-              paginate(1);
-            } else if (swipe > swipeConfidenceThreshold) {
-              paginate(-1);
-            }
-          }}
-        >
-          <div className="imgContainer">
-            <Image
-              src={`/images/services/gallery/${gallery[imageIndex]}`}
-              alt={gallery[imageIndex]}
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </motion.div>
-      </AnimatePresence>
-      <div className="next" onClick={() => paginate(1)}>
-        {'‣'}
-      </div>
-      <div className="prev" onClick={() => paginate(-1)}>
-        {'‣'}
-      </div>
-    </GalleryContainer>
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
+          >
+            <div className="imgContainer">
+              <Image
+                src={`/images/services/gallery/${gallery[imageIndex]}`}
+                alt={gallery[imageIndex]}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </motion.div>
+        </AnimatePresence>
+        <div className="next" onClick={() => paginate(1)}>
+          {'‣'}
+        </div>
+        <div className="prev" onClick={() => paginate(-1)}>
+          {'‣'}
+        </div>
+      </GalleryContainer>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        gallery={gallery}
+        imageIndex={imageIndex}
+      />
+    </>
   );
 };
 
@@ -92,14 +135,14 @@ const GalleryContainer = styled.div`
   min-height: 350px;
   height: 30vh;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 10px;
 
   .FramerContainer {
     width: 100%;
     height: 100%;
     position: absolute;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   .imgContainer {
@@ -135,6 +178,26 @@ const GalleryContainer = styled.div`
   .prev {
     left: 10px;
     transform: scale(-1);
+  }
+`;
+
+const ModalContainer = styled(motion.div)`
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .imgContainer {
+    width: 90%;
+    height: 90%;
+    position: relative;
   }
 `;
 

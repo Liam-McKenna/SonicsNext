@@ -28,9 +28,10 @@ function Navbar() {
               <Link href={'/'}>
                 <a>Home</a>
               </Link>
+
               <Line
                 initial={{ width: '0%' }}
-                animate={{ width: router.pathname === '/' ? '100%' : '0%' }}
+                animate={{ width: router.pathname === '/' ? '100%' : '' }}
               />
             </motion.li>
             <motion.li>
@@ -40,7 +41,7 @@ function Navbar() {
               <Line
                 initial={{ width: '0%' }}
                 animate={{
-                  width: router.pathname === '/services' ? '100%' : '0%',
+                  width: router.pathname === '/services' ? '100%' : '',
                 }}
               />
             </motion.li>
@@ -51,7 +52,7 @@ function Navbar() {
               <Line
                 initial={{ width: '0%' }}
                 animate={{
-                  width: router.pathname === '/projects' ? '100%' : '0%',
+                  width: router.pathname === '/projects' ? '100%' : '',
                 }}
               />
             </motion.li>
@@ -62,7 +63,7 @@ function Navbar() {
               <Line
                 initial={{ width: '0%' }}
                 animate={{
-                  width: router.pathname === '/about' ? '100%' : '0%',
+                  width: router.pathname === '/about' ? '100%' : '',
                 }}
               />
             </motion.li>
@@ -73,7 +74,7 @@ function Navbar() {
               <Line
                 initial={{ width: '0%' }}
                 animate={{
-                  width: router.pathname === '/contact' ? '100%' : '0%',
+                  width: router.pathname === '/contact' ? '100%' : '',
                 }}
               />
             </motion.li>
