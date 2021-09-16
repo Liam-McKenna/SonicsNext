@@ -73,9 +73,13 @@ const Gallery = ({ gallery }) => {
   };
 
   useEffect(() => {
+    console.log('start: ' + tapStart.y);
+    console.log('End: ' + tapEnd.y);
+    console.log('start: ' + tapStart.x);
+    console.log('End: ' + tapEnd.x);
     tapStart.x === tapEnd.x && tapStart.y === tapEnd.y
-      ? setShowModal(true)
-      : setShowModal(false);
+      ? setTimeout(() => setShowModal(true), 50)
+      : '';
   }, [tapStart, tapEnd]);
 
   return (
