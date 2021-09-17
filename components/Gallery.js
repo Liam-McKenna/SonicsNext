@@ -73,12 +73,12 @@ const Gallery = ({ gallery }) => {
   };
 
   useEffect(() => {
-    console.log('start: ' + tapStart.y);
-    console.log('End: ' + tapEnd.y);
-    console.log('start: ' + tapStart.x);
-    console.log('End: ' + tapEnd.x);
-    tapStart.x === tapEnd.x && tapStart.y === tapEnd.y
-      ? setTimeout(() => setShowModal(true), 50)
+    Math.abs(tapStart.x - tapEnd.x) <= 20 &&
+    Math.abs(tapStart.x - tapEnd.x) >= -20 &&
+    Math.abs(tapStart.y - tapEnd.y) <= 20 &&
+    Math.abs(tapStart.y - tapEnd.y) >= -20
+      ? // tapStart.x === tapEnd.x && tapStart.y === tapEnd.y
+        setTimeout(() => setShowModal(true), 50)
       : '';
   }, [tapStart, tapEnd]);
 

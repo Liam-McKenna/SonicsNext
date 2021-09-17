@@ -27,7 +27,6 @@ function Cards() {
   const Card = ({ title, img, slug }) => {
     const [isOpen, setisOpen] = useState(false);
     const [imageIsLoaded, setImageIsLoaded] = useState(false);
-    console.log(imageIsLoaded);
     return (
       <Link href={'/services/' + slug}>
         <CardContainer
