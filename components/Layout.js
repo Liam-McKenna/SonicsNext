@@ -51,6 +51,10 @@ export default function Layout({ children, home }) {
 }
 
 const LayoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
   main {
     position: relative;
     z-index: 1;
