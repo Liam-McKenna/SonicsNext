@@ -116,7 +116,7 @@ const ContactFormContainer = styled.form`
               left: 10px;
           }
           label{
-            padding: 0px 0px 5px 10px;  
+            padding: 0px 0px 50px 10px;  
           }
       }
     }
