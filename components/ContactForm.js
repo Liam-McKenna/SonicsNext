@@ -102,6 +102,7 @@ const ContactFormContainer = styled.form`
       display: flex;
       gap: 1rem;
       justify-content: center;
+      align-items: center;
       @media (max-width: 768px) {
           flex-direction: column;
       }

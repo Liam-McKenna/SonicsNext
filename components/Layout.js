@@ -18,9 +18,11 @@ export default function Layout({ children, home }) {
           name="description"
           content="This is text for the page meta description"
         />
+        <html lang="en" />
       </Head>
       <Navbar />
-      <Background>
+
+      <TopBackground>
         <Image
           src="/images/services/serviceThumb1.jpg"
           alt="Hero Background"
@@ -28,7 +30,7 @@ export default function Layout({ children, home }) {
           objectFit="cover"
         />
         <div className="gradiant"></div>
-      </Background>
+      </TopBackground>
       <FooterBackground>
         <Image
           src="/images/services/serviceThumb2.jpg"
@@ -38,7 +40,7 @@ export default function Layout({ children, home }) {
         />
         <div className="gradiant"></div>
       </FooterBackground>
-
+      {/* <PatternBackground></PatternBackground> */}
       <AnimatePresence exitBeforeEnter>
         <motion.main>{children}</motion.main>
       </AnimatePresence>
@@ -48,9 +50,23 @@ export default function Layout({ children, home }) {
   );
 }
 
-const LayoutContainer = styled.div``;
+const LayoutContainer = styled.div`
+  main {
+    position: relative;
+    z-index: 1;
+  }
+`;
+const PatternBackground = styled.div`
+  background-image: url('/images/layout/topography.svg');
+  background-repeat: repeat;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.2;
+`;
 
-const Background = styled.div`
+const TopBackground = styled.div`
   z-index: -10;
   position: absolute;
   width: 100%;
