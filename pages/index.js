@@ -1,14 +1,17 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import Layout, { siteTitle } from '../components/Layout.js';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
-import { PageTransition } from '../animations/framerAnimations.js';
 
+//animation
+import { motion } from 'framer-motion';
+import { PageTransition } from '../animations/framerAnimations.js';
 //components
+import { siteTitle } from '../components/Layout.js';
 import Button from '../components/Button.js';
-import Cards from '../components/Cards.js';
+import ServiceCard from '../components/ServiceCard.js';
+//data
+import { servicesData } from '../public/data/services.js';
 
 export default function Home() {
   const HeroText = () => {
@@ -24,32 +27,6 @@ export default function Home() {
           the world.
         </p>
 
-        {/* <div className="social">
-          <div className="icon">
-            <Image
-              src={'/images/icons/linkedin.svg'}
-              width={30}
-              height={50}
-              alt="linkedin"
-            />
-          </div>
-          <div className="icon">
-            <Image
-              src={'/images/icons/yt.svg'}
-              width={30}
-              height={50}
-              alt="linkedin"
-            />
-          </div>
-          <div className="icon">
-            <Image
-              src={'/images/icons/fb.svg'}
-              width={30}
-              height={50}
-              alt="linkedin"
-            />
-          </div>
-        </div> */}
         <HeroAction />
       </HeroTextContainer>
     );
@@ -76,70 +53,26 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
 
-      <Background>
-        <Image
-          src="/images/services/serviceThumb1.jpg"
-          alt="Hero Background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="gradiant"></div>
-      </Background>
-      <FooterBackground>
-        <Image
-          src="/images/services/serviceThumb2.jpg"
-          alt="footer Background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="gradiant"></div>
-      </FooterBackground>
-
       <HomeContainer>
         <HeroText />
         {/* <HeroAction /> */}
       </HomeContainer>
-      <Cards />
+      <ServicesContainer>
+        {Object.keys(servicesData).map((data) => {
+          return (
+            <ServiceCard
+              title={servicesData[data]['name']}
+              img={servicesData[data]['img']}
+              slug={servicesData[data]['slug']}
+              key={uuidv4()}
+            />
+          );
+        })}
+      </ServicesContainer>
     </motion.div>
   );
 }
 
-const Background = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  top: 0;
-  left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      0deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-  }
-`;
-const FooterBackground = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  bottom: 0;
-  left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      180deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
-  }
-`;
 const HomeContainer = styled.div`
   position: relative;
   padding: 2rem 0 2rem 0;
@@ -171,4 +104,15 @@ const HeroActionContainer = styled.div`
   display: flex;
   gap: 15px;
   margin: 1rem;
+`;
+const ServicesContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1rem;
+  width: 100%;
+
+  @media (max-width: 780px) {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
 `;

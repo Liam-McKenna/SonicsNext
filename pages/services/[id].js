@@ -1,17 +1,18 @@
-import React from 'react';
-import Head from 'next/head';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { servicesData } from '../../public/data/services.js';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 import { PageTransition } from '../../animations/framerAnimations.js';
-
 //data
-import { projects } from '../../public/data/projects.js';
+import { servicesData } from '../../public/data/services.js';
+import { projectsData } from '../../public/data/projects.js';
+
 //components
 import Gallery from '../../components/Gallery.js';
 import ProjectCard from '../../components/ProjectCard.js';
+import { siteTitle } from '../../components/Layout.js';
 
 export const getStaticProps = async (context) => {
   let id = context.params.id;
@@ -44,53 +45,40 @@ function Service({ service }) {
       layout
     >
       <Head>
-        <title>Sonics Avi {service.name}</title>
+        <title>
+          {service.name} | {siteTitle}
+        </title>
       </Head>
-
-      <Background>
-        <Image
-          src={`/images/services/gallery/${service.gallery[0]}`}
-          alt="Hero Background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="gradiant"></div>
-      </Background>
-      <FooterBackground>
-        <Image
-          src={`/images/services/gallery/${service.gallery[2]}`}
-          alt="footer Background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="gradiant"></div>
-      </FooterBackground>
 
       <div className="galleryContainer">
         <Gallery gallery={service.gallery} />
       </div>
-
       <div className="information">
-        <h2>{service.name}</h2>
+        <h1>{service.name}</h1>
         <div className="longDescription">
           {service.longDescription.map((paragraph) => {
             return (
-              <p key={uuidv4()}>
-                {paragraph}
-                <br />
-                <br />
-              </p>
+              <div key={uuidv4()}>
+                <div className="paragraphSection">
+                  <h2>{paragraph.title}</h2>
+                  <div className="line"></div>
+                  <p>{paragraph.paragraph}</p>
+                </div>
+              </div>
             );
           })}
         </div>
       </div>
-      <h2>Related Projects</h2>
+
       <div className="relatedProjects">
-        {projects.map((project) => {
-          return project.catagory.includes(service.name) ? (
-            <ProjectCard key={uuidv4()} project={project} />
-          ) : null;
-        })}
+        <h1>Related Projects</h1>
+        <div className="cardsContainer">
+          {projectsData.map((project) => {
+            return project.catagory.includes(service.name) ? (
+              <ProjectCard key={uuidv4()} project={project} />
+            ) : null;
+          })}
+        </div>
       </div>
     </ServiceContainer>
   );
@@ -100,61 +88,51 @@ const ServiceContainer = styled(motion.div)`
   .information {
     width: 100%;
     display: flex;
+    gap: 2rem;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    position: relative;
-
-    .longDescription {
+    h1 {
       text-align: center;
+    }
+    .longDescription {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1rem;
+
+      .paragraphSection {
+        h2 {
+          color: var(--color3);
+          /* padding: 0rem 0 1rem 0; */
+        }
+        .line {
+          width: 80%;
+          height: 1px;
+          margin: 1rem 0 1rem 0;
+          background-color: var(--color3);
+          border-radius: 10px;
+        }
+
+        background-color: #111924;
+        border-radius: 10px;
+        padding: 1rem;
+      }
     }
   }
   .relatedProjects {
-    display: grid;
-    width: 100%;
-    justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .cardsContainer {
+      display: grid;
+      width: 100%;
+      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
   }
 
   .galleryContainer {
-  }
-`;
-
-const Background = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  top: 0;
-  left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      0deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-  }
-`;
-const FooterBackground = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  bottom: 0;
-  left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      180deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
   }
 `;
 

@@ -44,10 +44,10 @@ const Modal = ({ showModal, setShowModal, gallery, imageIndex }) => {
         >
           <motion.div className="imgContainer">
             <Image
-              src={`/images/services/gallery/${gallery[imageIndex]}`}
+              src={`/${gallery[imageIndex]}`}
               alt={gallery[imageIndex]}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
             />
           </motion.div>
         </ModalContainer>
@@ -121,7 +121,7 @@ const Gallery = ({ gallery }) => {
           >
             <div className="imgContainer">
               <Image
-                src={`/images/services/gallery/${gallery[imageIndex]}`}
+                src={`/${gallery[imageIndex]}`}
                 alt={gallery[imageIndex]}
                 layout="fill"
                 objectFit="cover"
@@ -196,6 +196,12 @@ const GalleryContainer = styled.div`
     left: 10px;
     transform: scale(-1);
   }
+
+  /* @media screen and (max-width: 641px) {
+    position: absolute
+    width: 100vw;
+    left: 0;
+  } */
 `;
 
 const ModalContainer = styled(motion.div)`
@@ -215,6 +221,8 @@ const ModalContainer = styled(motion.div)`
     width: 90%;
     height: 90%;
     position: relative;
+    overflow: hidden;
+    border-radius: 10px;
   }
 `;
 

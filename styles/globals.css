@@ -60,6 +60,6 @@ li {
 
 @media screen and (max-width: 641px) {
   main {
-    padding: 0px 0 150px 0;
+    padding: 20px 0 150px 0;
   }
 }

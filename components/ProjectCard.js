@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -12,58 +13,60 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <ProjectCardContainer
-      whileHover={{
-        scale: 1.05,
-      }}
-    >
-      <motion.div
-        className="imgContainer"
+    <Link href={'/projects/' + project.slug}>
+      <ProjectCardContainer
         whileHover={{
-          scale: 1.1,
-          clipPath: 'polygon(0 0, 100% 0, 100% 95%, 0 100%)',
+          scale: 1.05,
         }}
       >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: imageIsLoaded ? 1 : 0 }}
-        >
-          <Image
-            src={`/images/projects/${project.thumbnail}`}
-            alt={project.thumbnail}
-            layout="fill"
-            objectFit="cover"
-            onLoad={(event) => {
-              const target = event.target;
-              if (target.src.indexOf('data:image/gif;base64') < 0) {
-                setImageIsLoaded(true);
-              }
-            }}
-          />
-        </motion.div>
-        <motion.div
+          className="imgContainer"
           whileHover={{
-            opacity: 0,
+            scale: 1.1,
+            clipPath: 'polygon(0 0, 100% 0, 100% 95%, 0 100%)',
           }}
-          className="overlay"
-        ></motion.div>
-      </motion.div>
-      <div className="descriptContainer">
-        <div className="textContainer">
-          <h2>{project.name}</h2>
-          <p>{project.description}</p>
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: imageIsLoaded ? 1 : 0 }}
+          >
+            <Image
+              src={`/${project.thumbnail}`}
+              alt={project.thumbnail}
+              layout="fill"
+              objectFit="cover"
+              onLoad={(event) => {
+                const target = event.target;
+                if (target.src.indexOf('data:image/gif;base64') < 0) {
+                  setImageIsLoaded(true);
+                }
+              }}
+            />
+          </motion.div>
+          <motion.div
+            whileHover={{
+              opacity: 0,
+            }}
+            className="overlay"
+          ></motion.div>
+        </motion.div>
+        <div className="descriptContainer">
+          <div className="textContainer">
+            <h2>{project.name}</h2>
+            <p>{project.description}</p>
+          </div>
+          <div className="tags">
+            {project.tags.map((tag) => {
+              return (
+                <div className="tag" key={tag}>
+                  {tag}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="tags">
-          {project.tags.map((tag) => {
-            return (
-              <div className="tag" key={tag}>
-                {tag}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </ProjectCardContainer>
+      </ProjectCardContainer>
+    </Link>
   );
 };
 

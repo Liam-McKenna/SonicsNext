@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 function Navbar() {
   const router = useRouter();
-  console.log(router.pathname);
 
   const DesktopNav = () => {
     return (
@@ -26,7 +25,7 @@ function Navbar() {
           <motion.ul>
             <motion.li>
               <Link href={'/'}>
-                <a>Home</a>
+                <a>Services</a>
               </Link>
 
               <Line
@@ -34,7 +33,7 @@ function Navbar() {
                 animate={{ width: router.pathname === '/' ? '100%' : '' }}
               />
             </motion.li>
-            <motion.li>
+            {/* <motion.li>
               <Link href={'/services'}>
                 <a>Services</a>
               </Link>
@@ -44,7 +43,7 @@ function Navbar() {
                   width: router.pathname === '/services' ? '100%' : '',
                 }}
               />
-            </motion.li>
+            </motion.li> */}
             <motion.li>
               <Link href={'/projects'}>
                 <a>Projects</a>
@@ -130,14 +129,14 @@ function Navbar() {
               <motion.ul>
                 <motion.li variants={mobileLinks}>
                   <Link href={'/'}>
-                    <a>Home</a>
-                  </Link>
-                </motion.li>
-                <motion.li variants={mobileLinks}>
-                  <Link href={'/services'}>
                     <a>Services</a>
                   </Link>
                 </motion.li>
+                {/* <motion.li variants={mobileLinks}>
+                  <Link href={'/services'}>
+                    <a>Services</a>
+                  </Link>
+                </motion.li> */}
                 <motion.li variants={mobileLinks}>
                   <Link href={'/projects'}>
                     <a>Projects</a>
@@ -250,7 +249,7 @@ const MobileNavContainer = styled(motion.div)`
   z-index: 10;
 
   .menu-burger {
-    z-index: 11;
+    z-index: 10;
     position: fixed;
     display: flex;
     flex-direction: column;
