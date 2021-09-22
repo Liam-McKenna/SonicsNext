@@ -194,6 +194,7 @@ function Navbar() {
 const DesktopNavContainer = styled.div`
   position: fixed;
   left: 0;
+  top: 0;
   width: 100%;
   height: 60px;
   z-index: 10;

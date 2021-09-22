@@ -54,6 +54,7 @@ const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   main {
     position: relative;
@@ -64,6 +65,7 @@ const PatternBackground = styled.div`
   background-image: url('/images/layout/topography.svg');
   background-repeat: repeat;
   position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
