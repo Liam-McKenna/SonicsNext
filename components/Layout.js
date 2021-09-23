@@ -18,7 +18,6 @@ export default function Layout({ children, home }) {
           name="description"
           content="This is text for the page meta description"
         />
-        <html lang="en" />
       </Head>
       <Navbar />
 

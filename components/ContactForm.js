@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 function ContactForm() {
   const {
@@ -10,8 +11,25 @@ function ContactForm() {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    let config = {
+      method: 'post',
+      url: `${process.env.NEXT_PUBLIC_LOCALHOST}/api/contact`,
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        data,
+      },
+    };
+    try {
+      const response = await axios(config);
+      if (response.status == 200) {
+        reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
