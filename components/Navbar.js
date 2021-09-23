@@ -13,14 +13,16 @@ function Navbar() {
     return (
       <DesktopNavContainer>
         <div className="navbar-layout">
-          <div className="logoContainer">
-            <Image
-              src="/images/logoWhite.png"
-              alt="Logo"
-              width="90"
-              height="50"
-            />
-          </div>
+          <Link href={'/'}>
+            <div className="logoContainer">
+              <Image
+                src="/images/logoWhite.png"
+                alt="Logo"
+                width="90"
+                height="50"
+              />
+            </div>
+          </Link>
 
           <motion.ul>
             <motion.li>

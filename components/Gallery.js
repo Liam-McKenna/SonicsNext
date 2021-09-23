@@ -67,6 +67,7 @@ const Gallery = ({ gallery }) => {
   const [tapStart, setTapStart] = useState({ x: 0, y: 0 });
   const [tapEnd, setTapEnd] = useState({ x: 30, y: 30 });
   const imageIndex = wrap(0, gallery.length, page);
+  const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
@@ -77,8 +78,7 @@ const Gallery = ({ gallery }) => {
     Math.abs(tapStart.x - tapEnd.x) >= -20 &&
     Math.abs(tapStart.y - tapEnd.y) <= 20 &&
     Math.abs(tapStart.y - tapEnd.y) >= -20
-      ? // tapStart.x === tapEnd.x && tapStart.y === tapEnd.y
-        setTimeout(() => setShowModal(true), 50)
+      ? setTimeout(() => setShowModal(true), 50)
       : '';
   }, [tapStart, tapEnd]);
 
@@ -88,12 +88,10 @@ const Gallery = ({ gallery }) => {
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             className="FramerContainer"
-            // onClick={() => setShowModal(!showModal)}
             onTap={(event, info) => {
               setTapEnd({ ...tapStart, x: info.point.x, y: info.point.y });
             }}
             onTapStart={(event, info) => {
-              // tapStartFunc(info.point.x, info.point.y);
               setTapStart({ ...tapStart, x: info.point.x, y: info.point.y });
             }}
             key={page}
@@ -119,14 +117,27 @@ const Gallery = ({ gallery }) => {
               }
             }}
           >
-            <div className="imgContainer">
+            <motion.div
+              className="imgContainer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageIsLoaded ? 1 : 0 }}
+            >
               <Image
                 src={`/${gallery[imageIndex]}`}
                 alt={gallery[imageIndex]}
                 layout="fill"
                 objectFit="cover"
+                onLoad={(event) => {
+                  const target = event.target;
+                  // next/image use an 1x1 px git as placeholder. We only want the onLoad event on the actual image
+                  if (target.src.indexOf('data:image/gif;base64') < 0) {
+                    setImageIsLoaded(true);
+                  } else {
+                    setImageIsLoaded(false);
+                  }
+                }}
               />
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
         <div className="next" onClick={() => paginate(1)}>
