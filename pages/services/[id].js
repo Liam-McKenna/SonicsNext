@@ -112,7 +112,8 @@ const ServiceContainer = styled(motion.div)`
           border-radius: 10px;
         }
 
-        background-color: #111924;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(1.5px);
         border-radius: 10px;
         padding: 1rem;
       }

@@ -13,13 +13,14 @@ export default function Layout({ children, home }) {
   return (
     <LayoutContainer>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/favicon.ico" />
         <meta
           name="description"
           content="This is text for the page meta description"
         />
       </Head>
       <Navbar />
+      <PatternBackground></PatternBackground>
 
       <TopBackground>
         <Image
@@ -39,7 +40,6 @@ export default function Layout({ children, home }) {
         />
         <div className="gradiant"></div>
       </FooterBackground>
-      {/* <PatternBackground></PatternBackground> */}
       <AnimatePresence exitBeforeEnter>
         <motion.main>{children}</motion.main>
       </AnimatePresence>
@@ -63,49 +63,30 @@ const LayoutContainer = styled.div`
 const PatternBackground = styled.div`
   background-image: url('/images/layout/topography.svg');
   background-repeat: repeat;
-  position: fixed;
+  position: absolute;
+  z-index: -20;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  opacity: 0.2;
+  height: 100%;
+  opacity: 0.1;
 `;
 
 const TopBackground = styled.div`
-  z-index: -10;
   position: absolute;
+  z-index: -5;
   width: 100%;
   height: 500px;
   top: 0;
   left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      0deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-  }
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 21%, transparent 100%);
 `;
 const FooterBackground = styled.div`
-  z-index: -10;
+  z-index: -5;
   position: absolute;
   width: 100%;
   height: 500px;
   bottom: 0;
   left: 0;
-  .gradiant {
-    position: absolute;
-    width: 100%;
-    height: 500px;
-    background: var(--background-color);
-    background: linear-gradient(
-      180deg,
-      var(--background-color) 21%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
-  }
+  mask-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 21%, transparent 100%);
 `;

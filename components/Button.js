@@ -14,7 +14,7 @@ function Button({ title, link }) {
         borderRadius: '100px',
       }}
     >
-      <Link href="#">
+      <Link href={link}>
         <a>{title}</a>
       </Link>
     </ButtonContainer>

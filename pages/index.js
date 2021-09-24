@@ -10,6 +10,7 @@ import { PageTransition } from '../animations/framerAnimations.js';
 import { siteTitle } from '../components/Layout.js';
 import Button from '../components/Button.js';
 import ServiceCard from '../components/ServiceCard.js';
+import { Separator } from '../components/elements.js';
 //data
 import { servicesData } from '../public/data/services.js';
 
@@ -35,8 +36,8 @@ export default function Home() {
   const HeroAction = () => {
     return (
       <HeroActionContainer>
-        <Button title="Request A Demo" />
-        {/* <Button title="Projects" /> */}
+        <Button title="Contact Us" link="/contact" />
+        <Button title=" Our Projects" link="/projects" />
       </HeroActionContainer>
     );
   };
@@ -57,6 +58,7 @@ export default function Home() {
         <HeroText />
         {/* <HeroAction /> */}
       </HomeContainer>
+      <Separator />
       <ServicesContainer>
         {Object.keys(servicesData).map((data) => {
           return (
@@ -69,6 +71,7 @@ export default function Home() {
           );
         })}
       </ServicesContainer>
+      <Separator />
     </motion.div>
   );
 }
