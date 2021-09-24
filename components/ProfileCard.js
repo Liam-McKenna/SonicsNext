@@ -8,7 +8,12 @@ function ProfileCard({ profile }) {
   return (
     <ProfileCardContainer>
       <div className="imgContainer">
-        <Image src={`/${profile.img}`} layout="fill" objectFit="cover" />
+        <Image
+          src={`/${profile.img}`}
+          alt={profile.name}
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
       <h2>{profile.name}</h2>
       <p>{profile.title}</p>

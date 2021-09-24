@@ -5,7 +5,12 @@ import Image from 'next/image';
 function Footer() {
   return (
     <FooterContainer>
-      <Image src="/images/logoWhite.png" width="80" height="50" />
+      <Image
+        src="/images/logoWhite.png"
+        alt="sonicslogo"
+        width="80"
+        height="50"
+      />
       {/* <h3>Footer</h3> */}
     </FooterContainer>
   );
