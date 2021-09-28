@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
+//components
+import SocialLinks from '../components/SocialLinks.js';
 
 function Navbar() {
   const router = useRouter();
@@ -46,6 +48,7 @@ function Navbar() {
                 }}
               />
             </motion.li> */}
+
             <motion.li>
               <Link href={'/projects'}>
                 <a>Projects</a>
@@ -78,6 +81,9 @@ function Navbar() {
                   width: router.pathname === '/contact' ? '100%' : '',
                 }}
               />
+            </motion.li>
+            <motion.li>
+              <SocialLinks />
             </motion.li>
           </motion.ul>
         </div>
@@ -232,7 +238,7 @@ const DesktopNavContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
 
         a {
           height: 100%;

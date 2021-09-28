@@ -29,11 +29,12 @@ export default function Layout({ children, home }) {
           layout="fill"
           objectFit="cover"
         />
+
         <div className="gradiant"></div>
       </TopBackground>
       <FooterBackground>
         <Image
-          src="/images/services/serviceThumb2.jpg"
+          src="/images/projects/gallery/project3Gal1.jpg"
           alt="footer Background"
           layout="fill"
           objectFit="cover"

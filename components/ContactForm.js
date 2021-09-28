@@ -95,7 +95,7 @@ function ContactForm() {
               required: { value: true, message: 'Message required' },
             })}
             name="message"
-            rows="10"
+            rows="18"
             placeholder="Message"
           ></textarea>
         </div>
@@ -110,6 +110,7 @@ function ContactForm() {
 const ContactFormContainer = styled.form`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     gap: 1rem;
     .formRow {
