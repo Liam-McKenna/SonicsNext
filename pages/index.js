@@ -29,45 +29,6 @@ export default function Home() {
   const HeroText = () => {
     return (
       <HeroTextContainer>
-        <h1>Welcome To Sonics AVI</h1>
-        <p>
-          A premiere Audio Visual solutions architecture provider. <br />
-          <br />
-          We&#39;re here to support your business with seamless digital and
-          physical technical infastructure integration so that you can
-          collaborate with colleagues and customers no matter where they are in
-          the world.
-        </p>
-
-        <HeroAction />
-      </HeroTextContainer>
-    );
-  };
-
-  const HeroAction = () => {
-    return (
-      <HeroActionContainer>
-        <Button title="Contact Us" link="/contact" />
-        <Button title=" Our Projects" link="/projects" />
-      </HeroActionContainer>
-    );
-  };
-
-  return (
-    <motion.div
-      variants={PageTransition}
-      initial="hidden"
-      animate="enter"
-      exit="exit"
-      layout
-    >
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-
-      <HomeContainer>
-        <HeroText />
-
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +124,46 @@ export default function Home() {
             />
           </g>
         </svg>
+
+        <h1>Welcome To Sonics AVI</h1>
+
+        <p>
+          A premiere Audio Visual solutions architecture provider. <br />
+          <br />
+          We&#39;re here to support your business with seamless digital and
+          physical technical infastructure integration so that you can
+          collaborate with colleagues and customers no matter where they are in
+          the world.
+        </p>
+
+        <HeroAction />
+      </HeroTextContainer>
+    );
+  };
+
+  const HeroAction = () => {
+    return (
+      <HeroActionContainer>
+        <Button title="Contact Us" link="/contact" />
+        <Button title=" Our Projects" link="/projects" />
+      </HeroActionContainer>
+    );
+  };
+
+  return (
+    <motion.div
+      variants={PageTransition}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      layout
+    >
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+
+      <HomeContainer>
+        <HeroText />
       </HomeContainer>
       <Separator />
       <ServicesContainer>
@@ -190,6 +191,10 @@ const HomeContainer = styled.div`
   grid-gap: 1rem;
   align-items: center;
   justify-items: center;
+  svg {
+    max-height: 200px;
+    /* max-width: 250px; */
+  }
 `;
 const HeroTextContainer = styled.div`
   width: 100%;
